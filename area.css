@@ -67,14 +67,46 @@ h1 {
     transform: scale(1.1);
 }
 
-.rest-area {
-    border: 2px dashed #444;
-    padding: 10px;
-    border-radius: 8px;
-    background: #1e1e1e;
-    margin-top: 20px;
+/* 彈窗樣式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
 }
 
-.rest-area .drop-zone {
-    background-color: #333;
+.modal-content {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+}
+
+button {
+    padding: 10px;
+    background-color: #b85331;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #ff5733;
+}
+
+/* 設定選擇人員的 4x4 格式 */
+#playerList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4列 */
+    gap: 10px;
+    margin-bottom: 20px;
 }
