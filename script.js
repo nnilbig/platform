@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const playerListDiv = document.getElementById("player-list");
     
     let selectedSetting = null;
-    let playerList = ["安", "儒", "Eden", "靖博", "黑皮林", "仁", "小明", "可樂", "小毛", "Liu", "楊承", "容潔", "Jessica", "孟翰", "祈翰", "融", "甘", "喬", "Angel"];
+    let playerList = ["安", "儒", "Eden", "靖博", "黑皮林", "扯翔", "仁", "小明", "可樂", "小毛", "Liu", "楊承", "容潔", "Jessica", "孟翰", "祈翰", "融", "甘", "喬", "Angel", "棋", "小林"];
     let selectedPlayers = ["安", "儒"];
     let courtCount = 2; // 初始場地數
     let playerCount = 16; // 初始參加人數
