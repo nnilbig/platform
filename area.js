@@ -1,23 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     // 初始玩家資料
-    const defaultPlayers = [
-        { name: '安' },
-        { name: '儒' },
-        { name: 'Eden' },
-        { name: '靖博' },
-        { name: '黑皮林' },
-        { name: '小明' },
-        { name: '可樂' },
-        { name: '小毛' },
-        { name: 'Liu' },
-        { name: '楊承' },
-        { name: '容潔' },
-        { name: 'Jessica' },
-        { name: '扯翔' },
-        { name: '融' },
-        { name: '甘' },
-        { name: 'Angel' }
-    ];
+    const defaultPlayers = ["安", "儒", "Angel", "Eden", "靖博", "黑皮林", "扯翔", "小明", "可樂", "小毛", "楊承", "容潔", "融", "甘", "Jessica", "仁"];
 
     // 從 localStorage 讀取玩家資料，若無資料則使用預設資料
     const storedPlayers = JSON.parse(localStorage.getItem('players'));
@@ -38,11 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
         playerListDiv.innerHTML = ""; // 清空名單
 
         // 填入所有玩家名單
-        players.forEach(player => {
+        players.forEach(playerName => {
             const div = document.createElement('div');
             div.classList.add('player');
-            div.textContent = player.name;
-            div.addEventListener('click', () => togglePlayerSelection(areaId, player.name, div));
+            div.textContent = playerName;
+            div.addEventListener('click', () => togglePlayerSelection(areaId, playerName, div));
             playerListDiv.appendChild(div);
         });
 
