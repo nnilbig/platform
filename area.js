@@ -5,7 +5,6 @@ const defaultPlayers = [
     { name: 'Eden' },
     { name: '靖博' },
     { name: '黑皮林' },
-    { name: '仁' },
     { name: '小明' },
     { name: '可樂' },
     { name: '小毛' },
@@ -13,83 +12,87 @@ const defaultPlayers = [
     { name: '楊承' },
     { name: '容潔' },
     { name: 'Jessica' },
+    { name: '扯翔' },
     { name: '融' },
     { name: '甘' },
     { name: 'Angel' }
 ];
 
-// 將資料存入 localStorage，若尚未儲存
-if (!localStorage.getItem('players')) {
-    localStorage.setItem('players', JSON.stringify(defaultPlayers));
-}
+// 儲存每個區域的選擇名單
+let selectedPlayers = {
+    courtA: [],
+    queueA: [],
+    courtB: [],
+    queueB: []
+};
 
-// 讀取 localStorage 中的玩家資料
-let players = JSON.parse(localStorage.getItem('players'));
+// 顯示所有人員圖示並放置到區域
+function renderPlayers() {
+    const areaIds = ['courtA', 'queueA', 'courtB', 'queueB'];
+    areaIds.forEach(areaId => {
+        const areaZone = document.getElementById(areaId + 'Zone');
+        areaZone.innerHTML = ""; // 清空區域內容
 
-// 顯示玩家列表於休息區
-const restZone = document.getElementById('restZone');
-
-// 生成圓形玩家圖像
-function createPlayerElement(player) {
-    const playerElement = document.createElement('div');
-    playerElement.classList.add('player');
-    playerElement.textContent = player.name;
-    playerElement.draggable = true;
-    playerElement.addEventListener('dragstart', dragStart);
-    return playerElement;
-}
-
-// 初始化所有玩家顯示於休息區
-function initializePlayers() {
-    players.forEach(player => {
-        const playerElement = createPlayerElement(player);
-        restZone.appendChild(playerElement);
+        selectedPlayers[areaId]?.forEach(playerName => {
+            const playerDiv = document.createElement('div');
+            playerDiv.classList.add('player');
+            playerDiv.textContent = playerName;
+            areaZone.appendChild(playerDiv);
+        });
     });
 }
 
-// 拖曳開始
-function dragStart(e) {
-    e.dataTransfer.setData('text', e.target.textContent); // 儲存被拖曳元素的名稱
+renderPlayers(); // 初次渲染
+
+// 開啟選擇人員的彈窗
+function openPlayerModal(areaId) {
+    const modal = document.getElementById('playerModal');
+    const playerListDiv = document.getElementById('playerList');
+    playerListDiv.innerHTML = ""; // 清空名單
+
+    // 填入所有玩家名單
+    defaultPlayers.forEach(player => {
+        const div = document.createElement('div');
+        div.classList.add('player');
+        div.textContent = player.name;
+        div.addEventListener('click', () => togglePlayerSelection(areaId, player.name, div));
+        playerListDiv.appendChild(div);
+    });
+
+    modal.style.display = "flex"; // 顯示彈窗
 }
 
-// 允許放置
-function allowDrop(e) {
-    e.preventDefault();
-}
+// 關閉彈窗
+document.getElementById('closeModal').addEventListener('click', () => {
+    document.getElementById('playerModal').style.display = "none";
+});
 
-// 處理放置
-function drop(e) {
-    e.preventDefault();
-    const playerName = e.dataTransfer.getData('text'); // 取得拖曳的玩家名稱
-    const droppedPlayer = players.find(player => player.name === playerName);
-    const targetZone = e.target;
-
-    if (droppedPlayer) {
-        const currentPlayers = targetZone.getElementsByClassName('player');
-        
-        // 檢查該區域是否已經有 4 位玩家
-        if (currentPlayers.length < 4) {
-            const playerElement = createPlayerElement(droppedPlayer); // 重新生成玩家元素
-            targetZone.appendChild(playerElement); // 將玩家元素放入目標區域
-            
-            // 更新 localStorage
-            players = players.filter(player => player.name !== playerName); // 移除已經拖曳過的玩家
-            localStorage.setItem('players', JSON.stringify(players));
-
-            // 重新載入玩家名單
-            loadPlayers();
+// 切換選擇的人員
+function togglePlayerSelection(areaId, playerName, playerDiv) {
+    const index = selectedPlayers[areaId].indexOf(playerName);
+    if (index > -1) {
+        selectedPlayers[areaId].splice(index, 1); // 移除選中的人員
+        playerDiv.classList.remove('selected'); // 移除顏色
+    } else {
+        if (selectedPlayers[areaId].length < 4) {
+            selectedPlayers[areaId].push(playerName); // 增加選中的人員
+            playerDiv.classList.add('selected'); // 設置顏色
         }
     }
+    renderPlayers();
 }
 
-// 重新初始化玩家顯示
-function loadPlayers() {
-    restZone.innerHTML = ""; // 清空休息區
-    players.forEach(player => {
-        const playerElement = createPlayerElement(player);
-        restZone.appendChild(playerElement);
-    });
+// 排隊上場
+function moveQueueToCourt(queueId, courtId) {
+    const queue = selectedPlayers[queueId];
+    if (queue.length > 0) {
+        selectedPlayers[courtId] = selectedPlayers[courtId].concat(queue.splice(0, 4)); // 每次移動最多4人
+    }
+    renderPlayers();
 }
 
-// 初始化所有玩家
-initializePlayers();
+// 點擊區域來開啟選擇人員彈窗
+document.getElementById('courtA').addEventListener('click', () => openPlayerModal('courtA'));
+document.getElementById('queueA').addEventListener('click', () => openPlayerModal('queueA'));
+document.getElementById('courtB').addEventListener('click', () => openPlayerModal('courtB'));
+document.getElementBy
