@@ -9,49 +9,53 @@
 <body>
     <div class="container">
         <h1>WHONEXT 上場平台</h1>
-
-        <!-- 場地區域 -->
+    
         <div class="area-container">
+            <!-- 上場A區 -->
             <div class="area" id="courtA">
-                <div class="area-header">場地 A</div>
-                <div class="drop-zone" id="courtAZone" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <!-- 拖放區域 -->
+                <div class="area-header">上場 A</div>
+                <div class="drop-zone" id="courtAZone">
+                    <p>選擇人員至上場 A</p>
                 </div>
             </div>
-
-            <div class="area" id="courtB">
-                <div class="area-header">場地 B</div>
-                <div class="drop-zone" id="courtBZone" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <!-- 拖放區域 -->
-                </div>
-            </div>
-        </div>
-
-        <!-- 排隊區域 -->
-        <div class="area-container">
+    
+            <!-- 排隊A區 -->
             <div class="area" id="queueA">
-                <div class="area-header">排隊 A</div>
-                <div class="drop-zone" id="queueAZone" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <!-- 拖放區域 -->
-                </div>
-            </div>
-
-            <div class="area" id="queueB">
-                <div class="area-header">排隊 B</div>
-                <div class="drop-zone" id="queueBZone" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <!-- 拖放區域 -->
+                <div class="area-header">排隊 A 區</div>
+                <div class="drop-zone" id="queueAZone">
+                    <p>選擇人員至排隊 A 區</p>
                 </div>
             </div>
         </div>
-
-        <!-- 休息區 -->
-        <div class="rest-area" id="restArea">
-            <div class="area-header">休息區</div>
-            <div class="drop-zone" id="restZone" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <!-- 休息區人員將從 localStorage 載入 -->
+    
+        <div class="area-container">
+            <!-- 上場B區 -->
+            <div class="area" id="courtB">
+                <div class="area-header">上場 B</div>
+                <div class="drop-zone" id="courtBZone">
+                    <p>選擇人員至上場 B</p>
+                </div>
+            </div>
+    
+            <!-- 排隊B區 -->
+            <div class="area" id="queueB">
+                <div class="area-header">排隊 B 區</div>
+                <div class="drop-zone" id="queueBZone">
+                    <p>選擇人員至排隊 B 區</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- 選擇人員的彈窗 -->
+        <div id="playerModal" class="modal">
+            <div class="modal-content">
+                <h2>選擇人員</h2>
+                <div id="playerList"></div>
+                <button id="closeModal" class="option">關閉</button>
             </div>
         </div>
     </div>
+
 
     <script src="area.js"></script>
 </body>
