@@ -36,17 +36,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (selectedPlayers.length < playerCount) {
         openTextModal("選擇人數不足");
     } else {
-        // 保存数据
+        // 保存數據
     	  localStorage.setItem("participants", JSON.stringify(selectedPlayers));
         openTextModal("設定已完成，您可以開始比賽！");
-        // 跳转到新页面
+        // 跳轉到新頁面
         setTimeout(function() {
-            window.location.href = "新頁面網址.html"; // 请将此处替换为您希望跳转的页面地址
-        }, 1000); // 等待2秒钟再跳转
+            window.location.href = "area.html"; // 請將此處替換為您希望跳轉的頁面地址
+        }, 1000); // 等待1秒鐘再跳轉
     }
 });
 
-// 更新 openModal 函数
+// 更新 openModal 函數
 function openModal(title, message) {
     selectedSetting = null;  // 清除設定
     modalTitle.textContent = title;
@@ -59,10 +59,10 @@ function openModal(title, message) {
 
     modal.style.display = "flex";
 
-    // 可以在此加入延迟关闭弹窗的逻辑
+    // 可以在此加入延遲關閉彈窗的邏輯
     setTimeout(() => {
         closeModal();
-    }, 2000); // 等待2秒后关闭
+    }, 2000); // 等待2秒後關閉
 }
 
 
@@ -119,17 +119,17 @@ function openModal(title, message) {
         modalInput.style.display = "none";
         playerListDiv.style.display = "none";
 
-        // 创建消息区域
+        // 创建消息區域
         const modalMessage = document.createElement('div');
         modalMessage.textContent = message;
         modal.appendChild(modalMessage);
 
         modal.style.display = "flex";
 
-        // 关闭弹窗后清除消息
+        // 關閉彈窗後清除消息
         setTimeout(() => {
             closeModal();
-        }, 2000); // 等待2秒后关闭
+        }, 2000); // 等待2秒後關閉
 		}
 
 
