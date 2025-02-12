@@ -3,10 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalTitle = document.getElementById("modal-title");
     const modalInput = document.getElementById("modal-input");
     const playerListDiv = document.getElementById("player-list");
-    
+    const settingCompleteBtn = document.getElementById("setting-complete");  // 取得設定完成按鈕
+
     let selectedSetting = null;
     let playerList = ["安", "儒", "Eden", "靖博", "黑皮林", "扯翔", "仁", "小明", "可樂", "小毛", "Liu", "楊承", "容潔", "Jessica", "孟翰", "祈翰", "融", "甘", "喬", "Angel", "棋", "小林"];
-    let selectedPlayers = ["安", "儒"];
+    let selectedPlayers = ["安", "儒","Angel","Eden", "靖博", "黑皮林", "扯翔","小明", "可樂", "小毛","楊承", "容潔", "融", "甘"];
     let courtCount = 2; // 初始場地數
     let playerCount = 16; // 初始參加人數
 
@@ -30,6 +31,41 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // 設定完成按鈕，檢查選擇人數是否足夠
+    settingCompleteBtn.addEventListener("click", function () {
+    if (selectedPlayers.length < playerCount) {
+        openTextModal("選擇人數不足");
+    } else {
+        // 保存数据
+    	  localStorage.setItem("participants", JSON.stringify(selectedPlayers));
+        openTextModal("設定已完成，您可以開始比賽！");
+        // 跳转到新页面
+        setTimeout(function() {
+            window.location.href = "新頁面網址.html"; // 请将此处替换为您希望跳转的页面地址
+        }, 1000); // 等待2秒钟再跳转
+    }
+});
+
+// 更新 openModal 函数
+function openModal(title, message) {
+    selectedSetting = null;  // 清除設定
+    modalTitle.textContent = title;
+    modalInput.style.display = "none";
+    playerListDiv.style.display = "none";
+    
+    const modalMessage = document.createElement('div');
+    modalMessage.textContent = message;
+    modal.appendChild(modalMessage);
+
+    modal.style.display = "flex";
+
+    // 可以在此加入延迟关闭弹窗的逻辑
+    setTimeout(() => {
+        closeModal();
+    }, 2000); // 等待2秒后关闭
+}
+
+
     // 開啟數值設定彈窗
     function openModal(title, settingId) {
         selectedSetting = settingId;
@@ -42,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             modalInput.value = playerCount;
         }
-        
+
         modal.style.display = "flex";
 
         // 監聽數值變更
@@ -72,9 +108,30 @@ document.addEventListener("DOMContentLoaded", function () {
         modalInput.style.display = "none";
         playerListDiv.style.display = "flex";
         modal.style.display = "flex";
-        
+
         renderPlayerList();
     }
+    
+    // 顯示文字內容的彈窗
+    function openTextModal(title, message) {
+        selectedSetting = null;  // 清除設定
+        modalTitle.textContent = title;
+        modalInput.style.display = "none";
+        playerListDiv.style.display = "none";
+
+        // 创建消息区域
+        const modalMessage = document.createElement('div');
+        modalMessage.textContent = message;
+        modal.appendChild(modalMessage);
+
+        modal.style.display = "flex";
+
+        // 关闭弹窗后清除消息
+        setTimeout(() => {
+            closeModal();
+        }, 2000); // 等待2秒后关闭
+		}
+
 
     // 生成可選擇的人員列表
     function renderPlayerList() {
