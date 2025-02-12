@@ -19,6 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: 'Angel' }
     ];
 
+    // 從 localStorage 讀取玩家資料，若無資料則使用預設資料
+    const storedPlayers = JSON.parse(localStorage.getItem('players'));
+    const players = storedPlayers ? storedPlayers : defaultPlayers;
+
     // 儲存每個區域的選擇名單
     let selectedPlayers = {
         courtA: [],
