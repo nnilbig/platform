@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHONEXT 上場平台</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>WHONEXT 上場平台</h1>
+
+        <!-- 比赛区域 -->
+        <div class="area-container">
+            <!-- 場地A -->
+            <div class="area" id="courtA">
+                <div class="area-header">場地 A</div>
+                <div class="sub-area">
+                    <div class="sub-area-header">上場中</div>
+                    <div class="drop-zone" id="courtAPlaying" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <!-- 上場區域：4个虚线圆圈 -->
+                        <div class="dashed-circle"></div>
+                        <div class="dashed-circle"></div>
+                        <div class="dashed-circle"></div>
+                        <div class="dashed-circle"></div>
+                    </div>
+                </div>
+                <div class="sub-area">
+                    <div class="sub-area-header">排隊中</div>
+                    <div class="drop-zone" id="courtAQueue" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <!-- 排隊區域：4个虚线圆圈 -->
+                        <div class="dashed-circle"></div>
+                        <div class="dashed-circle"></div>
+                        <div class="dashed-circle"></div>
+                        <div class="dashed-circle"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 場地B -->
+            <div class="area" id="courtB">
+                <div class="area-header">場地 B</div>
+                <div class="sub-area">
+                    <div class="sub-area-header">上場中</div>
+                    <div class="drop-zone" id="courtBPlaying" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <!-- 上場區域：4个虚线圆圈 -->
+                        <div class="dashed-circle"></div>
+                        <div class="dashed-circle"></div>
+                        <div class="dashed-circle"></div>
+                        <div class="dashed-circle"></div>
+                    </div>
+                </div>
+                <div class="sub-area">
+                    <div class="sub-area-header">排隊中</div>
+                    <div class="drop-zone" id="courtBQueue" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <!-- 排隊區域：4个虚线圆圈 -->
+                        <div class="dashed-circle"></div>
+                        <div class="dashed-circle"></div>
+                        <div class="dashed-circle"></div>
+                        <div class="dashed-circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 休息區 -->
+        <div class="rest-area" id="restArea">
+            <div class="area-header">休息區</div>
+            <div class="drop-zone" id="restZone" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <!-- 休息區人員 圈圈將從 localStorage 載入 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
