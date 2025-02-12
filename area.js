@@ -25,6 +25,21 @@ document.addEventListener("DOMContentLoaded", function () {
             const div = document.createElement('div');
             div.classList.add('player');
             div.textContent = playerName;
+
+            // 根據玩家所屬區域設置顏色
+            if (selectedPlayers.courtA.includes(playerName) || selectedPlayers.courtB.includes(playerName)) {
+                // 已上場的玩家
+                div.classList.add('onCourt'); // 設置上場中的顏色
+            } else if (selectedPlayers.queueA.includes(playerName) || selectedPlayers.queueB.includes(playerName)) {
+                // 在排隊中的玩家
+                div.classList.add('inQueue'); // 設置排隊中的顏色
+            }
+
+            // 如果該玩家已選擇，給予 selected 類別
+            if (selectedPlayers[areaId].includes(playerName)) {
+                div.classList.add('selected');
+            }
+
             div.addEventListener('click', () => togglePlayerSelection(areaId, playerName, div));
             playerListDiv.appendChild(div);
         });
@@ -33,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 關閉彈窗
-    document.getElementById('closeModal').addEventListener('click', closeModal);
     function closeModal() {
         document.getElementById('playerModal').style.display = "none";
     }
@@ -94,6 +108,14 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('queueA').addEventListener('click', () => openPlayerModal('queueA'));
     document.getElementById('courtB').addEventListener('click', () => openPlayerModal('courtB'));
     document.getElementById('queueB').addEventListener('click', () => openPlayerModal('queueB'));
+
+    // 點擊 modal 以外的區域關閉彈窗
+    const modal = document.getElementById('playerModal');
+    modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
 
     // 初次渲染
     renderPlayers();
