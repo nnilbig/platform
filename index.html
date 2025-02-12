@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHONEXT 羽球排點平台</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>WHONEXT 羽球排點平台</h1>
+        <div class="option" id="court-setting">場地數量：<span id="court-count">2</span></div>
+        <div class="option" id="player-setting">參加人數：<span id="player-count">16</span></div>
+        <div class="option" id="playerlist-setting">選擇人員</div>
+    </div>
+
+    <!-- 通用彈窗 -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <p id="modal-title"></p>
+            <input type="number" id="modal-input" min="1">
+            <div class="player-list" id="player-list"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
