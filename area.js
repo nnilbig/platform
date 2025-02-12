@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         playerListDiv.innerHTML = ""; // 清空名單
 
         // 填入所有玩家名單
-        defaultPlayers.forEach(player => {
+        players.forEach(player => {
             const div = document.createElement('div');
             div.classList.add('player');
             div.textContent = player.name;
