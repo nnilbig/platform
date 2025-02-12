@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         openTextModal("選擇人數不足");
     } else {
         // 保存數據
-    	  localStorage.setItem("participants", JSON.stringify(selectedPlayers));
+    	  localStorage.setItem("players", JSON.stringify(selectedPlayers));
         openTextModal("設定已完成，您可以開始比賽！");
         // 跳轉到新頁面
         setTimeout(function() {
