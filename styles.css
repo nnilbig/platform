@@ -85,3 +85,8 @@ input {
     background: #b85331;
     transform: scale(1.1); /* 鼠标悬停时轻微放大 */
 }
+
+.player.selected:hover {
+    background-color: #9c4429; /* 深一點的顏色，讓 hover 時仍有變化 */
+    border-color: #83351d;
+}
