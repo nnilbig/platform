@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
             playerListDiv.style.display = 'none';
             modal.style.display = "flex";
             // 將玩家列表存入 localStorage
-            localStorage.setItem('selectedPlayers', JSON.stringify(selectedPlayers));
+            localStorage.setItem('storedPlayers', JSON.stringify(selectedPlayers));
             localStorage.setItem('courtCount', courtCount);
             
             // 1秒後自動跳轉
