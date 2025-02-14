@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const defaultPlayers = ["安", "儒", "Angel", "Eden", "靖博", "黑皮林", "扯翔", "小明", "可樂", "小毛", "楊承", "容潔", "融", "甘", "Jessica", "仁"];
 
     // 從 localStorage 讀取玩家資料，若無資料則使用預設資料
-    const storedPlayers = JSON.parse(localStorage.getItem('selectedPlayers'));
+    const storedPlayers = JSON.parse(localStorage.getItem('storedPlayers'));
     const players = storedPlayers ? storedPlayers : defaultPlayers;
 
     // 儲存每個區域的選擇名單
