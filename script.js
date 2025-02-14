@@ -23,6 +23,75 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("playerlist-setting").addEventListener("click", function () {
         openPlayerModal();
     });
+    document.getElementById("add-player").addEventListener("click", function () {
+        openAddPlayerModal();
+    });
+
+    document.getElementById("remove-player").addEventListener("click", function () {
+        openRemovePlayerModal();
+    });
+
+    // 開啟新增人員彈窗
+    function openAddPlayerModal() {
+        selectedSetting = "add-player";
+        modalTitle.textContent = "新增人員";
+        modalInput.style.display = "block";
+        modalInput.type = "text";
+        modalInput.placeholder = "請輸入姓名";
+        playerListDiv.style.display = "none";
+        modal.style.display = "flex";
+
+        // 監聽 Enter 鍵
+        modalInput.onkeyup = function(e) {
+            if (e.key === "Enter") {
+                const newName = modalInput.value.trim();
+                if (newName) {
+                    if (!playerList.includes(newName)) {
+                        playerList.push(newName);
+                        closeModal();
+                        openTextModal("已新增人員：" + newName);
+                    } else {
+                        openTextModal("此人員已存在");
+                    }
+                }
+                modalInput.value = "";
+            }
+        };
+    }
+
+    // 開啟移除人員彈窗
+    function openRemovePlayerModal() {
+        selectedSetting = "remove-player";
+        modalTitle.textContent = "移除人員";
+        modalInput.style.display = "block";
+        modalInput.type = "text"; 
+        modalInput.placeholder = "請輸入要移除的姓名";
+        playerListDiv.style.display = "none";
+        modal.style.display = "flex";
+
+        // 監聽 Enter 鍵
+        modalInput.onkeyup = function(e) {
+            if (e.key === "Enter") {
+                const removeName = modalInput.value.trim();
+                if (removeName) {
+                    const index = playerList.indexOf(removeName);
+                    if (index > -1) {
+                        playerList.splice(index, 1);
+                        // 如果被移除的人員在已選擇名單中，也要移除
+                        const selectedIndex = selectedPlayers.indexOf(removeName);
+                        if (selectedIndex > -1) {
+                            selectedPlayers.splice(selectedIndex, 1);
+                        }
+                        closeModal();
+                        openTextModal("已移除人員：" + removeName);
+                    } else {
+                        openTextModal("找不到此人員");
+                    }
+                }
+                modalInput.value = "";
+            }
+        };
+    }
 
     // 點擊外部關閉彈窗
     modal.addEventListener("click", function (event) {
