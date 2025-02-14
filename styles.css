@@ -58,6 +58,22 @@ input {
     font-size: 16px;
 }
 
+.confirm-button {
+    background: #b85331;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.confirm-button:hover {
+    background: #9c4429;
+}
+
 /* 選擇人員清單 */
 .player-list {
     margin-top: 15px;
