@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const settingCompleteBtn = document.getElementById("setting-complete");  // 取得設定完成按鈕
 
     let selectedSetting = null;
-    let playerList = ["安", "儒", "Eden", "靖博", "黑皮林", "扯翔", "仁", "小明", "可樂", "小毛", "Liu", "楊承", "容潔", "Jessica", "孟翰", "祈翰", "融", "甘", "喬", "Angel", "棋", "小林"];
-    let selectedPlayers = ["安", "儒","Angel","Eden", "靖博", "黑皮林", "扯翔","小明", "可樂", "小毛","楊承", "容潔", "融", "甘"];
+    let playerList = ["安", "儒", "Eden", "靖博", "黑皮林", "扯翔", "仁", "小明", "可樂", "小毛", "Liu", "楊承", "容潔", "阿駱", "Jessica", "孟翰", "祈翰", "融", "甘", "喬", "Angel", "棋", "小林", "霖"];
+    let selectedPlayers = ["安", "儒","Angel","Eden", "靖博", "黑皮林", "扯翔","小明", "可樂", "小毛", "融", "甘","阿駱", "Jessica", "Liu", "霖"];
     let courtCount = 2; // 初始場地數
     let playerCount = 16; // 初始參加人數
 
