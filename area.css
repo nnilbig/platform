@@ -82,12 +82,11 @@ h1 {
 
 /* 只縮小 drop-zone 內的 player */
 .drop-zone .player {
-    width: 40px;  /* 縮小寬度 */
-    height: 40px; /* 縮小高度 */
-    font-size: 10px; /* 調整字體大小 */
+    width: 45px;  /* 縮小寬度 */
+    height: 45px; /* 縮小高度 */
+    font-size: 12px; /* 調整字體大小 */
     margin: 3px; /* 縮小間距 */
 }
-
 
 /* 彈窗樣式 */
 
